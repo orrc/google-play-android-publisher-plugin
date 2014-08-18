@@ -1,0 +1,22 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:a="/lib/auth">
+
+  <!-- TODO: Subclass to remove the "scopes" stuff nobody wants to know about? -->
+  <a:credentials title="${%Google Play account}" field="googleCredentialsId" />
+
+  <f:entry title="${%APK files}" field="apkFilesPattern" description="${%Comma-separated list of filenames or patterns}">
+    <f:textbox />
+  </f:entry>
+
+  <f:entry title="${%Release track}" field="trackName">
+    <f:combobox style="width:15em" />
+  </f:entry>
+
+  <f:entry title="${%Rollout %}" field="rolloutPercentage" description="${%Only applies to the 'production' release track}">
+    <f:combobox style="width:15em" />
+  </f:entry>
+
+  <f:entry title="${%Recent changes}" field="recentChangeList">
+    <f:repeatableProperty field="recentChangeList" add="${%Add language...}" minimum="0" />
+  </f:entry>
+
+</j:jelly>
