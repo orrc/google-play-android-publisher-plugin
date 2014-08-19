@@ -33,7 +33,11 @@ public abstract class GooglePlayPublisher extends Recorder {
     protected final GoogleRobotCredentials getServiceAccountCredentials() throws UploadException {
         try {
             GoogleOAuth2ScopeRequirement req = new AndroidPublisherScopeRequirement();
-            return GoogleRobotCredentials.getById(googleCredentialsId).forRemote(req);
+            GoogleRobotCredentials credentials = GoogleRobotCredentials.getById(googleCredentialsId);
+            if (credentials == null) {
+                throw new UploadException("Credentials for the configured Google Account could not be found");
+            }
+            return credentials.forRemote(req);
         } catch (IllegalStateException e) {
             if (ExceptionUtils.getRootCause(e) instanceof FileNotFoundException) {
                 throw new UploadException("Failed to get Google service account info. Ensure that the JSON file and " +

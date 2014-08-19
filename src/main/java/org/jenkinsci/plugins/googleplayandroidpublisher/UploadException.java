@@ -2,6 +2,10 @@ package org.jenkinsci.plugins.googleplayandroidpublisher;
 
 public class UploadException extends Exception {
 
+    public UploadException(String message) {
+        super(message);
+    }
+
     public UploadException(String message, Throwable cause) {
         super(message, cause);
     }
