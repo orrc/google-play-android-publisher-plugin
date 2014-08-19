@@ -49,14 +49,7 @@ public class Util {
     static AndroidPublisher getPublisherClient(GoogleRobotCredentials credentials,
             String pluginVersion) throws GeneralSecurityException {
         final Credential credential = credentials.getGoogleCredential(new AndroidPublisherScopeRequirement());
-
-        HttpTransport credentialgetTransport = credential.getTransport();
-        NetHttpTransport.Builder builder = new NetHttpTransport.Builder();
-        builder.doNotValidateCertificate();
-        builder.setProxy(new Proxy(Proxy.Type.SOCKS, new InetSocketAddress("127.0.0.1", 8889)));
-        credentialgetTransport = builder.build();
-
-        return new AndroidPublisher.Builder(credentialgetTransport, credential.getJsonFactory(), credential)
+        return new AndroidPublisher.Builder(credential.getTransport(), credential.getJsonFactory(), credential)
                 .setApplicationName(getClientUserAgent(pluginVersion))
                 .build();
     }
