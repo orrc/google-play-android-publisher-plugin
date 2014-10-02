@@ -1,5 +1,6 @@
 package org.jenkinsci.plugins.googleplayandroidpublisher;
 
+import com.google.common.base.Throwables;
 import com.google.jenkins.plugins.credentials.domains.RequiresDomain;
 import com.google.jenkins.plugins.credentials.oauth.GoogleOAuth2ScopeRequirement;
 import com.google.jenkins.plugins.credentials.oauth.GoogleRobotCredentials;
@@ -61,9 +62,14 @@ public abstract class GooglePlayPublisher extends Recorder {
     protected static String getPublisherErrorMessage(UploadException e) {
         if (e instanceof PublisherApiException) {
             // TODO: Here we could map error reasons like "apkUpgradeVersionConflict" to better (and localised) text
-            return ((PublisherApiException) e).getDetailsMessage();
+            String message = ((PublisherApiException) e).getDetailsMessage();
+            if (message != null && message.trim().length() > 0) {
+                return message;
+            }
         }
-        return e.getMessage();
+
+        // Otherwise print the whole stacktrace, as it's something unrelated to this plugin
+        return Throwables.getStackTraceAsString(e);
     }
 
     /** Task which searches for files using an Ant Fileset pattern. */
