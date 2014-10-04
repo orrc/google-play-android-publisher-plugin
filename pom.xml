@@ -64,4 +64,10 @@
     </pluginRepository>
   </pluginRepositories>
 
+  <scm>
+    <connection>scm:git:git://github.com/jenkinsci/google-play-android-publisher-plugin.git</connection>
+    <developerConnection>scm:git:git@github.com:jenkinsci/google-play-android-publisher-plugin.git</developerConnection>
+    <url>https://github.com/jenkinsci/google-play-android-publisher-plugin</url>
+  </scm>
+
 </project>
