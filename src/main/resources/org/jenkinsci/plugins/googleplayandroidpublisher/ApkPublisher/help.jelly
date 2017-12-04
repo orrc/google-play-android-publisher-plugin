@@ -1,0 +1,16 @@
+<?jelly escape-by-default="true"?>
+<j:jelly xmlns:j="jelly:core" xmlns:t="/lib/token-macro">
+  <p>
+    This build step allows you to upload one or more Android APKs to Google Play.
+  </p>
+  <p>
+    All text fields in this section support expansion of environment variable values
+    in the form <tt>$${SOME_VARIABLE}</tt> or <tt>$SOME_VARIABLE</tt> at build time.
+  </p>
+  <j:if test="${app.getPlugin('token-macro') != null}">
+    <p>
+      The following values are also supported:
+    </p>
+    <t:help />
+  </j:if>
+</j:jelly>

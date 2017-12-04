@@ -1,0 +1,26 @@
+<div>
+  The percentage of existing production users to which the given version code(s)
+  should be rolled out.
+  <p/>
+  Google Play limits the percentage values to:
+  <ul>
+    <li>0.5%</li>
+    <li>1%</li>
+    <li>5%</li>
+    <li>10%</li>
+    <li>20%</li>
+    <li>50%</li>
+  </ul>
+  If you enter no value here, or 100%, the app will be rolled out to all users.
+  <p/>
+  This field is ignored if you choose a release track other than 'production';
+  releases to other tracks are always rolled out to 100% of the existing users.
+  <p/>
+  For more information on staged rollouts, see the Google Play documentation:<br/>
+  <a href='https://support.google.com/googleplay/android-developer/answer/3131213'>
+    https://support.google.com/googleplay/android-developer/answer/3131213
+  </a>
+  <hr/>
+  This field supports substituting environment variables in the form
+  <tt>${SOME_VARIABLE}</tt> or <tt>$SOME_VARIABLE</tt> at build time.
+</div>

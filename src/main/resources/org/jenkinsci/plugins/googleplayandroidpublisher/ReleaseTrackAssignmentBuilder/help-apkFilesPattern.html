@@ -1,0 +1,25 @@
+<div>
+  Specifies filenames or patterns matching one or more APK files from which the
+  version codes should be read, in order to determine which APK versions should
+  be re-assigned to a new release track.
+  <p/>
+  Note that these APKs should have already been uploaded — this build step will
+  not do any uploading of APKs; it will only move existing APKs from one release
+  track to another. To upload APKs, use the "Upload Android APK to Google Play"
+  post-build action.
+  <p/>
+  You can use wildcards like "<tt>**/build/outputs/*/*-release.apk</tt>".<br/>
+  See <a href='https://ant.apache.org/manual/Types/fileset.html'>
+  the 'includes' attribute of Ant's FileSet</a> for the exact format.<br/>
+  Note that multiple entries must be comma-separated.
+  <p/>
+  The base directory is <a href='ws/'>the build's workspace</a>.
+  You can only reference APKs that are located in your workspace.
+  <p/>
+  Applications which have several APKs per release, taking advantage of
+  <a href='https://developer.android.com/google/play/publishing/multiple-apks.html'>
+  Multiple APK Support</a>, should list all of the APK files here.<br/>
+  <hr/>
+  This field supports substituting environment variables in the form
+  <tt>${SOME_VARIABLE}</tt> or <tt>$SOME_VARIABLE</tt> at build time.
+</div>

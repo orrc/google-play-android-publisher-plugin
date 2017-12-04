@@ -1,4 +1,5 @@
-# Repository has moved
+# Google Play Android Publisher plugin for Jenkins
 
-Please see the canonical repo:  
-https://github.com/jenkinsci/google-play-android-publisher-plugin
+Enables Jenkins to upload Android apps (APK files) and related info to Google Play.
+
+https://wiki.jenkins-ci.org/display/JENKINS/Google+Play+Android+Publisher+Plugin

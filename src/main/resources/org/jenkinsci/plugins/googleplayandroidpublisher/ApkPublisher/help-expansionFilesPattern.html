@@ -1,0 +1,55 @@
+<div>
+  Specifies filenames or patterns matching zero or more
+  <a href="https://developer.android.com/google/play/expansion-files.html">
+  expansion files</a> that should be associated with the APK files being
+  uploaded to Google Play.
+  <p/>
+  You can list as many or as few expansion files as you like &mdash; you have
+  the option of associating previously-uploaded expansion files with the new
+  APKs being uploading here.
+
+  <h2>Naming</h2>
+  Files <b>must</b> be named in the format
+  <tt>[main|patch].&lt;expansion-version&gt;.&lt;application-id&gt.obb</tt>
+  <p/>
+  For example:
+  <ul>
+    <li><tt>main.1000.com.example.mygame.obb</tt></li>
+    <li><tt>patch.1002.com.example.mygame.obb</tt></li>
+  </ul>
+
+  <h2>Patterns</h2>
+  You can use wildcards like "<tt>**/build/**/*.obb</tt>".<br/>
+  See <a href='https://ant.apache.org/manual/Types/fileset.html'>
+  the 'includes' attribute of Ant's FileSet</a> for the exact format.<br/>
+  Note that multiple entries must be comma-separated.
+  <p/>
+  The base directory is <a href='ws/'>the build's workspace</a>.
+  You can only upload OBB files that are located in your workspace.
+
+  <h2>Re-using existing expansion files</h2>
+  If you don't provide a main or patch expansion file for every APK that you
+  want to upload, enabling the "Re-use expansion files from existing APKs where
+  necessary" option will automatically associate existing expansion file(s) with
+  the APK(s) being uploaded.
+  <p/>
+  With this option enabled, if not enough expansion files are provided for all
+  of the APK(s) being uploaded, this plugin will search for the <i>newest</i>,
+  previously-uploaded APKs on Google Play with main or patch expansion files,
+  and will associate those files with the new APK(s) being uploaded here.
+  <p/>
+  For example: If you want to upload a new APK, but the expansion files have not
+  changed at all, you should leave the "Expansion files" field blank, but enable
+  the checkbox.<br/>
+  At build time, the latest existing main (and patch, if available) expansion
+  files will be associated with the newly-uploaded APK.
+  <p/>
+  Similarly, if you have a new build, but only want to change the patch file,
+  then just provide the patch expansion file and make sure this option is
+  checked. The uploaded APK will have the existing main expansion file
+  associated with it, along with the newly-uploaded patch file.
+
+  <hr/>
+  This field supports substituting environment variables in the form
+  <tt>${SOME_VARIABLE}</tt> or <tt>$SOME_VARIABLE</tt> at build time.
+</div>
