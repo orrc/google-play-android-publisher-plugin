@@ -1,0 +1,20 @@
+<div>
+  Specifies filenames or patterns matching one or more APKs that should be
+  uploaded to Google Play.
+  <p/>
+  You can use wildcards like "<tt>**/build/outputs/*/*-release.apk</tt>".<br/>
+  See <a href='https://ant.apache.org/manual/Types/fileset.html'>
+  the 'includes' attribute of Ant's FileSet</a> for the exact format.<br/>
+  Note that multiple entries must be comma-separated.
+  <p/>
+  The base directory is <a href='ws/'>the build's workspace</a>.
+  You can only upload APKs that are located in your workspace.
+  <p/>
+  Applications which have several APKs per release, taking advantage of
+  <a href='https://developer.android.com/google/play/publishing/multiple-apks.html'>
+  Multiple APK Support</a>, must have all of their APKs uploaded together, and
+  all APKs must have the same application identifier (APK package name).<br/>
+  <hr/>
+  This field supports substituting environment variables in the form
+  <tt>${SOME_VARIABLE}</tt> or <tt>$SOME_VARIABLE</tt> at build time.
+</div>
